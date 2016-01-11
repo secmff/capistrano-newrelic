@@ -8,7 +8,7 @@ namespace :newrelic do
     if changelog.nil? && fetch(:scm) == :git
       on primary(:app) do
         within repo_path do
-          changelog = capture(:git, "log --no-color --pretty=format:'* %an: %s' --abbrev-commit --no-merges #{fetch(:previous_revision)[/^.*$/]}..#{fetch(:current_revision)}")
+          changelog = capture(:git, "log --no-color --pretty=format:'* %an: %s' --abbrev-commit --no-merges #{fetch(:previous_revision)}..#{fetch(:current_revision)}")
         end
       end
     end
